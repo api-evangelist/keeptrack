@@ -5,8 +5,7 @@ url: >2-
 apis:
   - aid: keeptrack:keeptrack
     name: KeepTrack
-    tags:
-      - API
+    tags: []
     humanURL: https://www.keeptrack.space/api
     properties:
       - url: https://www.keeptrack.space/api
@@ -19,8 +18,8 @@ apis:
       orbits, run collision scenarios, and track debris fragmentation over time.
 name: KeepTrack
 tags:
-  - Space
   - Satellites
+  - Space
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

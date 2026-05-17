@@ -6,7 +6,7 @@ description: >-
   can simulate satellite launches, visualize debris patterns, and explore a catalog
   of 30,000+ real satellites and debris. Zoom through geosynchronous orbits, run
   collision scenarios, and track debris fragmentation over time.
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 position: Consuming

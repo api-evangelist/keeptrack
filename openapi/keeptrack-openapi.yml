@@ -1,0 +1,282 @@
+openapi: 3.1.0
+info:
+  title: KeepTrack Space API
+  description: |
+    Free, open API for satellite tracking, orbital predictions, and space catalog
+    data covering 60,000+ tracked objects. Derived from the public OpenAPI
+    document hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints
+    require a free API key.
+  version: "4.2.0"
+  contact:
+    name: KeepTrack
+    url: https://www.keeptrack.space/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.keeptrack.space/v4
+    description: Production KeepTrack API
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Satellites
+    description: Search and retrieve catalog data about tracked space objects.
+  - name: Positions
+    description: Compute real-time positions and ephemerides.
+  - name: Orbits
+    description: Retrieve orbital elements (TLE, OMM).
+  - name: Catalog
+    description: Bulk catalog and listings.
+paths:
+  /satellites/search:
+    get:
+      tags: [Satellites]
+      summary: Search the satellite catalog
+      operationId: searchSatellites
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: NORAD Catalog ID, International Designator, or partial name.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 25
+      responses:
+        '200':
+          description: A list of matching catalog objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SatelliteSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /satellites/{noradId}:
+    parameters:
+      - name: noradId
+        in: path
+        required: true
+        description: NORAD Catalog ID of the tracked object.
+        schema:
+          type: integer
+    get:
+      tags: [Satellites]
+      summary: Get a tracked object by NORAD Catalog ID
+      operationId: getSatellite
+      responses:
+        '200':
+          description: Catalog entry for the object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Satellite'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Object not found.
+  /satellites/{noradId}/position:
+    parameters:
+      - name: noradId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      tags: [Positions]
+      summary: Compute the current position of a tracked object
+      operationId: getSatellitePosition
+      parameters:
+        - name: epoch
+          in: query
+          required: false
+          description: ISO-8601 UTC epoch. Defaults to now.
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Position in multiple coordinate frames.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /satellites/{noradId}/tle:
+    parameters:
+      - name: noradId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      tags: [Orbits]
+      summary: Get the most recent Two-Line Element set for an object
+      operationId: getSatelliteTle
+      responses:
+        '200':
+          description: Two-Line Element data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TLE'
+            text/plain:
+              schema:
+                type: string
+                description: Raw TLE text (line1 + newline + line2).
+  /catalog:
+    get:
+      tags: [Catalog]
+      summary: List the satellite catalog with pagination
+      operationId: listCatalog
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: A page of catalog entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SatelliteSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Free API key issued from https://keeptrack.space.
+  responses:
+    Unauthorized:
+      description: API key required or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+              docs:
+                type: string
+                format: uri
+  schemas:
+    SatelliteSummary:
+      type: object
+      properties:
+        noradId:
+          type: integer
+        intlDes:
+          type: string
+          description: International Designator.
+        name:
+          type: string
+        type:
+          type: string
+          description: Object type (payload, debris, rocket body, etc).
+    Satellite:
+      allOf:
+        - $ref: '#/components/schemas/SatelliteSummary'
+        - type: object
+          properties:
+            country:
+              type: string
+            launchDate:
+              type: string
+              format: date
+            launchSite:
+              type: string
+            apogee:
+              type: number
+            perigee:
+              type: number
+            period:
+              type: number
+            inclination:
+              type: number
+    TLE:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        epoch:
+          type: string
+          format: date-time
+    Position:
+      type: object
+      properties:
+        epoch:
+          type: string
+          format: date-time
+        eci:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+        ecf:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+        geodetic:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+            altitude:
+              type: number
+        velocity:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number

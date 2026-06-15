@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KeepTrack Space API",
+    "version": "4.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Satellites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the satellite catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "NORAD Catalog ID, International Designator, or partial name."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search the satellite catalog"
+        },
+        {
+          "info": {
+            "name": "Get a tracked object by NORAD Catalog ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path",
+                "description": "NORAD Catalog ID of the tracked object."
+              }
+            ]
+          },
+          "docs": "Get a tracked object by NORAD Catalog ID"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Compute the current position of a tracked object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId/position",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "ISO-8601 UTC epoch. Defaults to now."
+              }
+            ]
+          },
+          "docs": "Compute the current position of a tracked object"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orbits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the most recent Two-Line Element set for an object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId/tle",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the most recent Two-Line Element set for an object"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the satellite catalog with pagination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/catalog",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the satellite catalog with pagination"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

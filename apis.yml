@@ -7,7 +7,7 @@ description: >-
   of 30,000+ real satellites and debris. Zoom through geosynchronous orbits, run
   collision scenarios, and track debris fragmentation over time.
 kind: contract
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 position: Consuming
 tags:

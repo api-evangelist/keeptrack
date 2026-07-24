@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: KeepTrack Space Catalog Positions API
+  description: 'Free, open API for satellite tracking, orbital predictions, and space catalog
+
+    data covering 60,000+ tracked objects. Derived from the public OpenAPI
+
+    document hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints
+
+    require a free API key.
+
+    '
+  version: 4.2.0
+  contact:
+    name: KeepTrack
+    url: https://www.keeptrack.space/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.keeptrack.space/v4
+  description: Production KeepTrack API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Positions
+  description: Compute real-time positions and ephemerides.
+paths:
+  /satellites/{noradId}/position:
+    parameters:
+    - name: noradId
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Positions
+      summary: Compute the current position of a tracked object
+      operationId: getSatellitePosition
+      parameters:
+      - name: epoch
+        in: query
+        required: false
+        description: ISO-8601 UTC epoch. Defaults to now.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Position in multiple coordinate frames.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: API key required or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+              docs:
+                type: string
+                format: uri
+  schemas:
+    Position:
+      type: object
+      properties:
+        epoch:
+          type: string
+          format: date-time
+        eci:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+        ecf:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+        geodetic:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+            altitude:
+              type: number
+        velocity:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Free API key issued from https://keeptrack.space.

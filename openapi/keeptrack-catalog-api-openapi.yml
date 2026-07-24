@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: KeepTrack Space Catalog API
+  description: 'Free, open API for satellite tracking, orbital predictions, and space catalog
+
+    data covering 60,000+ tracked objects. Derived from the public OpenAPI
+
+    document hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints
+
+    require a free API key.
+
+    '
+  version: 4.2.0
+  contact:
+    name: KeepTrack
+    url: https://www.keeptrack.space/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.keeptrack.space/v4
+  description: Production KeepTrack API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Catalog
+  description: Bulk catalog and listings.
+paths:
+  /catalog:
+    get:
+      tags:
+      - Catalog
+      summary: List the satellite catalog with pagination
+      operationId: listCatalog
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: A page of catalog entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SatelliteSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    SatelliteSummary:
+      type: object
+      properties:
+        noradId:
+          type: integer
+        intlDes:
+          type: string
+          description: International Designator.
+        name:
+          type: string
+        type:
+          type: string
+          description: Object type (payload, debris, rocket body, etc).
+  responses:
+    Unauthorized:
+      description: API key required or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+              docs:
+                type: string
+                format: uri
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Free API key issued from https://keeptrack.space.

@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: KeepTrack Space Catalog Orbits API
+  description: 'Free, open API for satellite tracking, orbital predictions, and space catalog
+
+    data covering 60,000+ tracked objects. Derived from the public OpenAPI
+
+    document hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints
+
+    require a free API key.
+
+    '
+  version: 4.2.0
+  contact:
+    name: KeepTrack
+    url: https://www.keeptrack.space/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.keeptrack.space/v4
+  description: Production KeepTrack API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Orbits
+  description: Retrieve orbital elements (TLE, OMM).
+paths:
+  /satellites/{noradId}/tle:
+    parameters:
+    - name: noradId
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Orbits
+      summary: Get the most recent Two-Line Element set for an object
+      operationId: getSatelliteTle
+      responses:
+        '200':
+          description: Two-Line Element data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TLE'
+            text/plain:
+              schema:
+                type: string
+                description: Raw TLE text (line1 + newline + line2).
+components:
+  schemas:
+    TLE:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        epoch:
+          type: string
+          format: date-time
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Free API key issued from https://keeptrack.space.

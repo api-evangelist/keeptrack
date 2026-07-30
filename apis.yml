@@ -7,7 +7,20 @@ description: >-
   of 30,000+ real satellites and debris. Zoom through geosynchronous orbits, run
   collision scenarios, and track debris fragmentation over time.
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/keeptrack.png
 access: 3rd-Party
 position: Consuming
 tags:
@@ -18,25 +31,64 @@ created: '2024-11-07T00:00:00.000Z'
 modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
-  - aid: keeptrack:keeptrack
-    name: KeepTrack
-    description: >-
-      Keep Track is the free, open source tool that makes space exploration accessible
-      to all - professionals and amateurs alike. With its user-friendly interface,
-      you can simulate satellite launches, visualize debris patterns, and explore
-      a catalog of 30,000+ real satellites and debris. Zoom through geosynchronous
-      orbits, run collision scenarios, and track debris fragmentation over time.
-    humanURL: https://www.keeptrack.space/api
-    baseURL: https://www.keeptrack.space/api
-    tags:
-      - Satellites
-      - Space
-    properties:
-      - type: Documentation
-        url: https://www.keeptrack.space/api
-    contact:
-      - FN: KeepTrack
-        url: https://www.keeptrack.space
+- aid: keeptrack:keeptrack
+  name: KeepTrack
+  description: >-
+    Keep Track is the free, open source tool that makes space exploration accessible to all - professionals
+    and amateurs alike. With its user-friendly interface, you can simulate satellite launches, visualize
+    debris patterns, and explore a catalog of 30,000+ real satellites and debris. Zoom through geosynchronous
+    orbits, run collision scenarios, and track debris fragmentation over time.
+  humanURL: https://www.keeptrack.space/api
+  baseURL: https://www.keeptrack.space/api
+  tags:
+  - Satellites
+  - Space
+  properties:
+  - type: Documentation
+    url: https://www.keeptrack.space/api
+  contact:
+  - FN: KeepTrack
+    url: https://www.keeptrack.space
+- aid: keeptrack:keeptrack-catalog-api
+  name: KeepTrack Catalog API
+  description: Bulk catalog and listings.
+  humanURL: https://www.keeptrack.space/api
+  baseURL: https://www.keeptrack.space/api
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/keeptrack-catalog-api-openapi.yml
+- aid: keeptrack:keeptrack-orbits-api
+  name: KeepTrack Orbits API
+  description: Retrieve orbital elements (TLE, OMM).
+  humanURL: https://www.keeptrack.space/api
+  baseURL: https://www.keeptrack.space/api
+  tags:
+  - Orbits
+  properties:
+  - type: OpenAPI
+    url: openapi/keeptrack-orbits-api-openapi.yml
+- aid: keeptrack:keeptrack-positions-api
+  name: KeepTrack Positions API
+  description: Compute real-time positions and ephemerides.
+  humanURL: https://www.keeptrack.space/api
+  baseURL: https://www.keeptrack.space/api
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/keeptrack-positions-api-openapi.yml
+- aid: keeptrack:keeptrack-satellites-api
+  name: KeepTrack Satellites API
+  description: Search and retrieve catalog data about tracked space objects.
+  humanURL: https://www.keeptrack.space/api
+  baseURL: https://www.keeptrack.space/api
+  tags:
+  - Satellites
+  properties:
+  - type: OpenAPI
+    url: openapi/keeptrack-satellites-api-openapi.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

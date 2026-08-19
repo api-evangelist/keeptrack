@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KeepTrack Space Catalog Orbits API",
+    "version": "4.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orbits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the most recent Two-Line Element set for an object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId/tle",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the most recent Two-Line Element set for an object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

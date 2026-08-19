@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KeepTrack Space Catalog Satellites API",
+    "version": "4.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Satellites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the satellite catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "NORAD Catalog ID, International Designator, or partial name."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search the satellite catalog"
+        },
+        {
+          "info": {
+            "name": "Get a tracked object by NORAD Catalog ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path",
+                "description": "NORAD Catalog ID of the tracked object."
+              }
+            ]
+          },
+          "docs": "Get a tracked object by NORAD Catalog ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,214 @@
+{
+  "item": [
+    {
+      "id": "43fb7a02-4eec-4fdd-b019-78c21aa2e766",
+      "name": "Positions",
+      "description": {
+        "content": "Compute real-time positions and ephemerides.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8283702-8e96-4bff-a57b-b6177a38f1bf",
+          "name": "Compute the current position of a tracked object",
+          "request": {
+            "name": "Compute the current position of a tracked object",
+            "description": {},
+            "url": {
+              "path": [
+                "satellites",
+                ":noradId",
+                "position"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "epoch",
+                  "value": "<dateTime>",
+                  "description": "ISO-8601 UTC epoch. Defaults to now."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "noradId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c912bf3f-9b60-4f02-ae19-4e6dc9788620",
+              "name": "Position in multiple coordinate frames.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    ":noradId",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "epoch",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "noradId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"epoch\": \"1975-11-12T19:06:19.942Z\",\n  \"eci\": {\n    \"x\": 4088.7629759971746,\n    \"y\": 7899.020001266155,\n    \"z\": 4876.733931111473\n  },\n  \"ecf\": {\n    \"x\": 8445.478337169465,\n    \"y\": 2613.0349482267247,\n    \"z\": 5655.411078777975\n  },\n  \"geodetic\": {\n    \"latitude\": 1504.6345261207316,\n    \"longitude\": 9180.476728446627,\n    \"altitude\": 7988.677205184239\n  },\n  \"velocity\": {\n    \"x\": 3908.72088831832,\n    \"y\": 6150.837883926394,\n    \"z\": 5307.737366414722\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac89b627-5a16-4a80-bcdd-230088cd5a9a",
+              "name": "API key required or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    ":noradId",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "epoch",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "noradId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"docs\": \"https://VpcOmvDLq.ntfKrvqe6JJmI0L63Q55rXt5KVL.6+196HXV\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.keeptrack.space/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0ca77fa-3a73-4846-99d5-08dc8f3aed30",
+    "name": "KeepTrack Space Catalog Positions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Free, open API for satellite tracking, orbital predictions, and space catalog\ndata covering 60,000+ tracked objects. Derived from the public OpenAPI\ndocument hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints\nrequire a free API key.\n\n\nContact Support:\n Name: KeepTrack",
+      "type": "text/plain"
+    }
+  }
+}

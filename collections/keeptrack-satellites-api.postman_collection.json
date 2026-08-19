@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "897517c7-9411-4e86-9d93-8a00cffffc60",
+      "name": "Satellites",
+      "description": {
+        "content": "Search and retrieve catalog data about tracked space objects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69ae122c-83db-47eb-8691-f9d5b6068309",
+          "name": "Search the satellite catalog",
+          "request": {
+            "name": "Search the satellite catalog",
+            "description": {},
+            "url": {
+              "path": [
+                "satellites",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) NORAD Catalog ID, International Designator, or partial name."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7120e4a3-b036-4a2f-aa8c-2cfb585776ee",
+              "name": "A list of matching catalog objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"noradId\": 1703,\n      \"intlDes\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"noradId\": 9398,\n      \"intlDes\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50796227-f8d6-4a48-bffd-3d0972f489da",
+              "name": "API key required or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"docs\": \"https://oPxHjyTgSWfwUIMMNapsleFnXwaMaduhH.fsaaqaBW24YQx3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e766cef-a331-4543-9a82-b3326ac50a57",
+          "name": "Get a tracked object by NORAD Catalog ID",
+          "request": {
+            "name": "Get a tracked object by NORAD Catalog ID",
+            "description": {},
+            "url": {
+              "path": [
+                "satellites",
+                ":noradId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "noradId",
+                  "description": "(Required) NORAD Catalog ID of the tracked object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd965b9d-6928-4ad5-aecf-ad626f025705",
+              "name": "Catalog entry for the object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    ":noradId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "noradId",
+                      "description": "(Required) NORAD Catalog ID of the tracked object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"noradId\": 3517,\n  \"intlDes\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"country\": \"string\",\n  \"launchDate\": \"2006-11-15\",\n  \"launchSite\": \"string\",\n  \"apogee\": 4693.808090891815,\n  \"perigee\": 5437.842371743797,\n  \"period\": 6222.261553361474,\n  \"inclination\": 7793.750132454287\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a3f7f3b-3337-4ca5-9af0-361323bfd5fc",
+              "name": "API key required or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    ":noradId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "noradId",
+                      "description": "(Required) NORAD Catalog ID of the tracked object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"docs\": \"https://oPxHjyTgSWfwUIMMNapsleFnXwaMaduhH.fsaaqaBW24YQx3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164be40e-b200-4573-b8f6-66cabc6a4fe7",
+              "name": "Object not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "satellites",
+                    ":noradId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "noradId",
+                      "description": "(Required) NORAD Catalog ID of the tracked object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.keeptrack.space/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7426c485-86d8-4b23-952b-3925524ab5e8",
+    "name": "KeepTrack Space Catalog Satellites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Free, open API for satellite tracking, orbital predictions, and space catalog\ndata covering 60,000+ tracked objects. Derived from the public OpenAPI\ndocument hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints\nrequire a free API key.\n\n\nContact Support:\n Name: KeepTrack",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KeepTrack Space Catalog Positions API",
+    "version": "4.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Compute the current position of a tracked object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.keeptrack.space/v4/satellites/:noradId/position",
+            "params": [
+              {
+                "name": "noradId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "ISO-8601 UTC epoch. Defaults to now."
+              }
+            ]
+          },
+          "docs": "Compute the current position of a tracked object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

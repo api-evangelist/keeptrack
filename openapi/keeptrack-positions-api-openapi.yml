@@ -1,15 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: KeepTrack Space Catalog Positions API
+  title: KeepTrack Space Positions API
   description: 'Free, open API for satellite tracking, orbital predictions, and space catalog
 
     data covering 60,000+ tracked objects. Derived from the public OpenAPI
 
     document hosted at https://api.keeptrack.space/v4/openapi.json. Endpoints
 
-    require a free API key.
-
-    '
+    require a free API key.'
   version: 4.2.0
   contact:
     name: KeepTrack

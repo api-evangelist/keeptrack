@@ -1,10 +1,7 @@
 {
   "provider": "keeptrack",
   "sources": [
-    "keeptrack-catalog-api-openapi.yml",
-    "keeptrack-orbits-api-openapi.yml",
-    "keeptrack-positions-api-openapi.yml",
-    "keeptrack-satellites-api-openapi.yml"
+    "_original/keeptrack-openapi.yml"
   ],
   "outputs": [
     "keeptrack-catalog-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "keeptrack-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "keeptrack-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "keeptrack-orbits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "keeptrack-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "keeptrack-satellites-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -85,19 +85,6 @@ paths:
           description: Object not found.
 components:
   schemas:
-    SatelliteSummary:
-      type: object
-      properties:
-        noradId:
-          type: integer
-        intlDes:
-          type: string
-          description: International Designator.
-        name:
-          type: string
-        type:
-          type: string
-          description: Object type (payload, debris, rocket body, etc).
     Satellite:
       allOf:
       - $ref: '#/components/schemas/SatelliteSummary'
@@ -118,6 +105,19 @@ components:
             type: number
           inclination:
             type: number
+    SatelliteSummary:
+      type: object
+      properties:
+        noradId:
+          type: integer
+        intlDes:
+          type: string
+          description: International Designator.
+        name:
+          type: string
+        type:
+          type: string
+          description: Object type (payload, debris, rocket body, etc).
   responses:
     Unauthorized:
       description: API key required or invalid.

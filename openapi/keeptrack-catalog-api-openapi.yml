@@ -63,20 +63,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  schemas:
-    SatelliteSummary:
-      type: object
-      properties:
-        noradId:
-          type: integer
-        intlDes:
-          type: string
-          description: International Designator.
-        name:
-          type: string
-        type:
-          type: string
-          description: Object type (payload, debris, rocket body, etc).
   responses:
     Unauthorized:
       description: API key required or invalid.
@@ -92,6 +78,20 @@ components:
               docs:
                 type: string
                 format: uri
+  schemas:
+    SatelliteSummary:
+      type: object
+      properties:
+        noradId:
+          type: integer
+        intlDes:
+          type: string
+          description: International Designator.
+        name:
+          type: string
+        type:
+          type: string
+          description: Object type (payload, debris, rocket body, etc).
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

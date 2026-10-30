@@ -1,4 +1,4 @@
-# KeepTrack (keeptrack)
+# KeepTrack
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,44 +66,120 @@
 
 Keep Track is the free, open source tool that makes space exploration accessible to all - professionals and amateurs alike. With its user-friendly interface, you can simulate satellite launches, visualize debris patterns, and explore a catalog of 30,000+ real satellites and debris. Zoom through geosynchronous orbits, run collision scenarios, and track debris fragmentation over time.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-search/keeptrack/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-search/keeptrack/refs/heads/main/apis.yml)
+**Areas:** Satellite · Space
 
-## Scope
+## KeepTrack on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for KeepTrack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/keeptrack/](https://apis.io/providers/keeptrack/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Satellites
-- Space
+- [KeepTrack](https://apis.io/apis/keeptrack/keeptrack/) — Keep Track is the free, open source tool that makes space exploration accessible to all - professionals and amateurs alike. With its user-friendly…
+- [KeepTrack Catalog API](https://apis.io/apis/keeptrack/keeptrack-catalog-api/) — Bulk catalog and listings.
+- [KeepTrack Orbits API](https://apis.io/apis/keeptrack/keeptrack-orbits-api/) — Retrieve orbital elements (TLE, OMM).
+- [KeepTrack Positions API](https://apis.io/apis/keeptrack/keeptrack-positions-api/) — Compute real-time positions and ephemerides.
+- [KeepTrack Satellites API](https://apis.io/apis/keeptrack/keeptrack-satellites-api/) — Search and retrieve catalog data about tracked space objects.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-07T00:00:00.000Z
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### KeepTrack
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Keep Track is the free, open source tool that makes space exploration accessible to all - professionals and amateurs alike. With its user-friendly interface, you can simulate satellite launches, visualize debris patterns, and explore a catalog of 30,000+ real satellites and debris. Zoom through geosynchronous orbits, run collision scenarios, and track debris fragmentation over time.
+- [Keeptrack Agentic Access](https://apis.io/agentic-access/keeptrack/keeptrack-agentic-access/)
 
-- **Human URL:** [https://www.keeptrack.space/api](https://www.keeptrack.space/api)
-- **Base URL:** `https://www.keeptrack.space/api`
+#### Collections (5)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Satellites
-- Space
+- [KeepTrack Space API](https://apis.io/collections/keeptrack/open-keeptrack/)
+- [KeepTrack Space Catalog API](https://apis.io/collections/keeptrack/open-keeptrack-catalog-api/)
+- [KeepTrack Space Catalog Orbits API](https://apis.io/collections/keeptrack/open-keeptrack-orbits-api/)
+- [KeepTrack Space Catalog Positions API](https://apis.io/collections/keeptrack/open-keeptrack-positions-api/)
+- [KeepTrack Space Catalog Satellites API](https://apis.io/collections/keeptrack/open-keeptrack-satellites-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://www.keeptrack.space/api)
-- [Postman Collection](collections/keeptrack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/keeptrack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Maintainers
+- [Keeptrack Authentication](https://apis.io/security/keeptrack/keeptrack-authentication/)
+- [Keeptrack Domain Security](https://apis.io/security/keeptrack/keeptrack-domain-security/)
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Keeptrack Plans Pricing](https://apis.io/plans/keeptrack/keeptrack-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Keeptrack Rate Limits](https://apis.io/rate-limits/keeptrack/keeptrack-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Keeptrack Finops](https://apis.io/finops/keeptrack/keeptrack-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://keeptrack.space)
+
+## API Evangelist rating
+
+**Kin Score 12.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/keeptrack/](https://apis.io/providers/keeptrack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for KeepTrack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/keeptrack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
